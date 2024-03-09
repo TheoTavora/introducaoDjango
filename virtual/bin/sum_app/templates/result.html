@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+        .result{
+            font-size: 24px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculadora de média</h1>
+    <form method="POST" action="{% url 'average' %}">
+        {% csrf_token %}
+        <input type="text" name="num1" placeholder="Digite a primeira nota">
+        <input type="text" name="num2" placeholder="Digite a segunda nota">
+        <input type="text" name="num3" placeholder="Digite a terceira nota">
+        <input type="text" name="num4" placeholder="Digite a quarta nota">
+        <input type="submit" value="Calcular">
+    </form>
+    {% if result %}
+    <div class="result">
+        A média dos números inseridos é: {{ result }}.
+    </div>
+    {% endif %}
+</body>
+</html>
